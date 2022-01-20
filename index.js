@@ -93,10 +93,44 @@ class Person {
     - A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-
-class Car {
   
+//New Way
+class Car {
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    return this.tank = this.tank + gallons;
+  }
+  drive(distance){
+    let odometerRaise = this.odometer + distance;
+    let tankUsed = this.tank - (distance/this.milesPerGallon);
+    let miLimit = this.tank*this.milesPerGallon;//How many miles I can go
+    let fuelLimit=miLimit/this.milesPerGallon;//How much fuel I can use
+
+    if(tankUsed<=this.tank){
+      this.odometer = odometerRaise
+      this.tank = tankUsed
+    }else if(tankUsed>this.tank){
+      this.odometer = this.odometer + miLimit
+      this.tank = this.tank - fuelLimit
+      return `I ran out of fuel at ${this.odometer} miles!`
+    }
+  }
 }
+
+// //Car object/instance
+// const car1 = new Car('Pontiac Sunfire', 20);
+
+// //function calls
+// car1.fill(15);
+
+// console.log(car1.drive(200));
+// //console test
+// console.log(car1);
 
 /*
   TASK 3
@@ -110,10 +144,26 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
+
 class Lambdasian {
-  
+  constructor(obj){
+    this.name = obj.name,
+    this.age = obj.age,
+    this.location = obj.location
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
 
+//Lambdasian Instance
+const andre = new Lambdasian({
+  name: 'Vincent Washington',
+  age: 31,
+  location: 'USA'
+});
+andre.speak();
+console.log(andre);
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
