@@ -39,6 +39,7 @@ class Airplane {
     - Give instances of Person a method `.toString()`:
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
+
 class Person {
   constructor(name, age){
     this.name=name
@@ -60,26 +61,6 @@ class Person {
   }
 }
 
-// // Instance of Person
-// const per1 = new Person ('Antonio', 31) 
-
-// per1.eat('French Fries')
-// per1.eat('Hot Dogs')
-// per1.eat('Tacos')
-// per1.eat('Burritos')
-// per1.eat('Salad')
-// per1.eat('Mashed Potatoes')
-// per1.eat('Fried Rice')
-// per1.eat('Green Beans')
-// per1.eat('Chicken')
-// per1.eat('Lamb')
-// // per1.eat('Pie') //Should console.log 'Full' message
-
-// per1.poop();
-
-// // Console Test(s)
-// console.log(per1.toString())
-
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -94,7 +75,6 @@ class Person {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
   
-//New Way
 class Car {
   constructor(model, milesPerGallon){
     this.model = model;
@@ -118,16 +98,6 @@ class Car {
     }
   }
 }
-
-// //Car object/instance
-// const car1 = new Car('Pontiac Sunfire', 20);
-
-// //function calls
-// car1.fill(15);
-
-// console.log(car1.drive(200));
-// //console test
-// console.log(car1);
 
 /*
   TASK 3
@@ -153,14 +123,6 @@ class Lambdasian {
   }
 }
 
-//Lambdasian Instance
-// const andre = new Lambdasian({
-//   name: 'Vincent Washington',
-//   age: 31,
-//   location: 'USA'
-// });
-// andre.speak();
-// console.log(andre);
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -175,9 +137,22 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
 
+class Instructor extends Lambdasian{
+  constructor (obj){
+    super(obj);
+    this.specialty = obj.specialty;
+    this.favLanguage = obj.favLanguage;
+    this.catchPhrase = obj.catchPhrase;
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}.`
+  }
+  grade(student, subject){
+    return `${student.name} receives a perfect score on ${subject}`
+  }
 }
+
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
