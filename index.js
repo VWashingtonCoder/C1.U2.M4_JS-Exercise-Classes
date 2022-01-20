@@ -106,17 +106,14 @@ class Car {
     return this.tank = this.tank + gallons;
   }
   drive(distance){
-    let odometerRaise = this.odometer + distance;
-    let tankUsed = this.tank - (distance/this.milesPerGallon);
-    let miLimit = this.tank*this.milesPerGallon;//How many miles I can go
-    let fuelLimit=miLimit/this.milesPerGallon;//How much fuel I can use
+    const driveableMiles = this.tank * this.milesPerGallon;
 
-    if(tankUsed<=this.tank){
-      this.odometer = odometerRaise
-      this.tank = tankUsed
-    }else if(tankUsed>this.tank){
-      this.odometer = this.odometer + miLimit
-      this.tank = this.tank - fuelLimit
+    if(distance <= driveableMiles){
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - (distance / this.milesPerGallon);
+    }else{
+      this.odometer = this.odometer + driveableMiles;
+      this.tank = 0;
       return `I ran out of fuel at ${this.odometer} miles!`
     }
   }
@@ -147,9 +144,9 @@ class Car {
 
 class Lambdasian {
   constructor(obj){
-    this.name = obj.name,
-    this.age = obj.age,
-    this.location = obj.location
+    this.name = obj.name;
+    this.age = obj.age;
+    this.location = obj.location;
   }
   speak(){
     return `Hello my name is ${this.name}, I am from ${this.location}`
@@ -157,13 +154,13 @@ class Lambdasian {
 }
 
 //Lambdasian Instance
-const andre = new Lambdasian({
-  name: 'Vincent Washington',
-  age: 31,
-  location: 'USA'
-});
-andre.speak();
-console.log(andre);
+// const andre = new Lambdasian({
+//   name: 'Vincent Washington',
+//   age: 31,
+//   location: 'USA'
+// });
+// andre.speak();
+// console.log(andre);
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
