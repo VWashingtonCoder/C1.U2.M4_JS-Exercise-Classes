@@ -1,4 +1,3 @@
-
 /*
   EXAMPLE TASK:
     - Write an Airplane class whose constructor initializes `name` from an argument.
@@ -40,10 +39,46 @@ class Airplane {
     - Give instances of Person a method `.toString()`:
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
-
 class Person {
-  
+  constructor(name, age){
+    this.name=name
+    this.age=age;
+    this.stomach = [];
+  }
+  eat(food){
+    if (this.stomach.length < 10){
+      this.stomach.push(food)
+    }else{
+      console.log(`${this.name} is full of ${this.stomach}. Maybe it's potty time.`)
+    }
+  }
+  poop(){
+    return this.stomach = [];
+  }
+  toString(){
+    return `${this.name}, ${this.age}`
+  }
 }
+
+// // Instance of Person
+// const per1 = new Person ('Antonio', 31) 
+
+// per1.eat('French Fries')
+// per1.eat('Hot Dogs')
+// per1.eat('Tacos')
+// per1.eat('Burritos')
+// per1.eat('Salad')
+// per1.eat('Mashed Potatoes')
+// per1.eat('Fried Rice')
+// per1.eat('Green Beans')
+// per1.eat('Chicken')
+// per1.eat('Lamb')
+// // per1.eat('Pie') //Should console.log 'Full' message
+
+// per1.poop();
+
+// // Console Test(s)
+// console.log(per1.toString())
 
 /*
   TASK 2
